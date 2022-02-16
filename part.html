@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ticonsultor</title>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet">
+    <!--<script defer src="js/all.min.js"></script>-->
+    <style>
+
+        .sa {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transition: .7s ease;
+            transition: .7s ease;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+
+        }
+
+        .sa::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(img/01.png);
+            background-size: cover;
+            -webkfilter: opacity(10%);
+            filter: opacity(10%);
+        }
+
+        .tarjeta:hover .sa {
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+
+        .soft {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transition: .7s ease;
+            transition: .7s ease;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .soft::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(img/02.png);
+            background-size: cover;
+            -webkit-filter: opacity(10%);
+            filter: opacity(10%);
+        }
+
+        .tarjeta:hover .soft {
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+
+        .hard {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transition: .7s ease;
+            transition: .7s ease;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .hard::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(img/03.png);
+            background-size: cover;
+            -webkit-filter: opacity(10%);
+            filter: opacity(10%);
+        }
+
+        .tarjeta:hover .hard {
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+
+        .net {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transition: .7s ease;
+            transition: .7s ease;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .net::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(img/04.png);
+            background-size: cover;
+            -webkit-filter: opacity(10%);
+            filter: opacity(10%);
+        }
+
+        .tarjeta:hover .net {
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+
+        .inter {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transition: .7s ease;
+            transition: .7s ease;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .inter::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(img/05.png);
+            background-size: cover;
+            -webkit-filter: opacity(10%);
+            filter: opacity(10%);
+        }
+
+        .tarjeta:hover .inter {
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+
+        .soporte {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transition: .7s ease;
+            transition: .7s ease;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .soporte::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(img/06.png);
+            background-size: cover;
+            -webkit-filter: opacity(10%);
+            filter: opacity(10%);
+        }
+
+        .tarjeta:hover .soporte {
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+
+        .segu {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transition: .7s ease;
+            transition: .7s ease;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .segu::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(img/07.png);
+            background-size: cover;
+            -webkit-filter: opacity(10%);
+            filter: opacity(10%);
+        }
+
+        .tarjeta:hover .segu {
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+
+        .ecom {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transition: .7s ease;
+            transition: .7s ease;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .ecom::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(img/08.png);
+            background-size: cover;
+            -webkit-filter: opacity(10%);
+            filter: opacity(10%);
+        }
+
+        .tarjeta:hover .ecom {
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+
+        .inside {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            padding: 10px;
+            color: #FFFFFF;
+            z-index: 10000;
+            filter: opacity(100%);
+        }
+
+        .form-control {
+
+            border: 1px solid #1e3c72;
+            border-radius: 0;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .formacontacto {
+            padding: 5px;
+        }
+
+        }
+
+        .formlabel {
+            font-family: "Raleway", sans-serif !important;
+        }
+
+        .is-hidden {
+            opacity: 0;
+            transition: transform 0.4s, opacity 0.2s;
+        }
+
+        .fixed-top {
+            visibility: visible;
+            /*background-color: #1d2124;*/
+            opacity: 1;
+            transition: visibility .5s ease-in;
+        }
+
+        .bg-trans {
+            opacity: 0;
+        }
+
+        .encabezado{
+            background-image: url("img/particulas.jpg");
+            background-size: cover;
+        }
+
+        header{
+            background-color: transparent;
+            position: relative;
+        }
+
+
+    </style>
+</head>
+<body>
+<!--<div id="particles-js">-->
+    <div id="encabezado" class="encabezado w-100">
+        <header class="w-100">
+            <nav class="navbar navbar-expand-lg f-menu" id="navbar1">
+                <a class="navbar-brand" href="#">
+                    <img src="img/logo02.png" width="100">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link f-blanco" href="#inicio">Inicio <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link f-blanco" href="#nosotros">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link f-blanco" href="#productos">Productos y servicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link f-blanco" href="#contacto">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link f-blanco" href="blog.html">Blog</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <section id="slide" class="w-100">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <div id="carousel1" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item">
+                                    <div class="info">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h1>Hola, estamos probando</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="info">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h1>Hola, estamos probando otra vez</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carousel1" role="button" data-slide="prev"
+                               style="width: 5%">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel1" role="button" data-slide="next"
+                               style="width: 5%">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+<!--</div>-->
+<section id="nosotros" class="w-100 seccion">
+    <div class="container">
+        <div class="row pt-5 pb-3">
+            <div class="col text-center">
+                <h1>¿Quienes Somos?</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 text-center">
+                <p>Somos una empresa sonorense enfocada en la calidad de los servicios.
+                    Nuestros productos y servicios son de la mejor calidad. Contamos con persona profesional,
+                    certificado y comprometido con el servicio</p>
+            </div>
+        </div>
+        <div class="row text-center pt-5 py-sm-5 pb-3">
+            <div class="col-lg-4 col-sm-12">
+                <div class="row justify-content-center">
+                    <img class="img-fluid w-25" src="img/mision.png">
+                </div>
+                <div class="row justify-content-center">
+                    <h2 class="py-3">Misión</h2>
+                </div>
+                <div class="row justify-content-center">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus finibus viverra. Maecenas
+                        aliquet venenatis massa vel pellentesque.
+                        Sed eu aliquet enim. Nunc vel laoreet felis, consequat eleifend metus. Donec rhoncus turpis non
+                        fringilla imperdiet.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 py-sm-5 py-lg-0">
+                <div class="row justify-content-center">
+                    <img class="img-fluid w-25" src="img/vision.png">
+                </div>
+                <div class="row justify-content-center">
+                    <h2 class="py-3">Visión</h2>
+                </div>
+                <div class="row justify-content-center">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus finibus viverra. Maecenas
+                        aliquet venenatis massa vel pellentesque.
+                        Sed eu aliquet enim. Nunc vel laoreet felis, consequat eleifend metus. Donec rhoncus turpis non
+                        fringilla imperdiet.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="row justify-content-center">
+                    <img class="img-fluid w-25" src="img/valores.png">
+                </div>
+                <div class="row justify-content-center">
+                    <h2 class="py-3">Valores</h2>
+                </div>
+                <div class="row justify-content-center">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus finibus viverra. Maecenas
+                        aliquet venenatis massa vel pellentesque.
+                        Sed eu aliquet enim. Nunc vel laoreet felis, consequat eleifend metus. Donec rhoncus turpis non
+                        fringilla imperdiet.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!--<canvas class="background"></canvas>
+<script src="js/particles.min.js"></script>-->
+<script src="js/particles.min.js"></script>
+<script src="js/jquery-min.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/app.js"></script>
+<script>
+    $('.carousel').carousel({
+        touch: true,
+        pause: "hover",
+        interval: false
+    });
+
+
+    $(document).ready(function () {
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            autoplay: true,
+            margin: 10,
+            nav: false,
+            dots: false,
+            slideTransition: 'linear',
+            autoplaySpeed: 6000,
+            smartSpeed: 6000,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 6
+                }
+            }
+        });
+
+        jQuery('.owl-carousel').trigger('play.owl.autoplay', [2000]);
+        function setSpeed() {
+            jQuery('.owl-carousel').trigger('play.owl.autoplay', [6000]);
+        }
+
+        setTimeout(setSpeed, 1000);
+
+        $('#carousel2').bind('slide.bs.carousel', function () {
+            var div = document.getElementById("carousel2");
+            var frames = div.getElementsByClassName("frame");
+            for (var i = 0; i <= frames.length - 1; i++) {
+                var iframe1 = frames.item(i);
+                //console.log(iframe1);
+                var player = iframe1.contentWindow;
+                player.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+            }
+        });
+
+        //$('body').css('padding-top', $('.navbar').outerHeight() + 'px');
+
+        /* if ($(window).width() > 992) {
+         $(window).scroll(function(){
+         if ($(this).scrollTop() > 80) {
+         $('#navbar1').addClass("fixed-top");
+         // add padding top to show content behind navbar
+         $('body').css('padding-top', $('.navbar').outerHeight() + 'px');
+         }else{
+         $('#navbar1').removeClass("fixed-top");
+         // remove padding top from body
+         $('body').css('padding-top', '0');
+         }
+         });
+         } // end if */
+
+
+    }); //fin onready
+    particlesJS.load('particles-js', 'js/particlesjs-config.json', function () {
+        console.log('callback - particles.js config loaded');
+    });
+    //particlesJS("particles-js","js/particlesjs-config.json");
+    //particlesJS.load('encabezado','js/particlesjs-config.json');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2658 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ticonsultor</title>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css"
+          rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
+
+    <script defer src="js/all.min.js"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .inside {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            padding: 10px;
+            color: #FFFFFF;
+            z-index: 10000;
+            filter: opacity(100%);
+        }
+
+        .form-control {
+
+            border: 1px solid #1e3c72;
+            border-radius: 0;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .formlabel {
+            font-family: "Raleway", sans-serif !important;
+        }
+
+        .is-hidden {
+            opacity: 0;
+            transition: transform 0.4s, opacity 0.2s;
+        }
+
+        header {
+            background-color: transparent;
+            position: relative;
+        }
+
+        .encabezado {
+            background-image: url("img/particulas.jpg");
+            background-size: cover;
+        }
+
+        .custom-toggler .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        }
+
+        .custom-toggler.navbar-toggler {
+            border-color: rgb(255, 102, 203);
+        }
+
+        .logomenu {
+            position: relative;
+            display: flex;
+            width: 20%;
+            float: left;
+            align-items: flex-start;
+            padding: 5px;
+            padding-left: 2%;
+
+            /*background-color: #ffffff;*/
+        }
+
+        .menu {
+            position: relative;
+            display: flex;
+            width: 60%;
+            float: left;
+            align-items: center;
+            padding: 5px;
+            /*background-color: #1e7e34*/;
+            text-align: center;
+        }
+
+        .redes {
+            position: relative;
+            display: flex;
+            width: 20%;
+            float: left;
+            align-items: flex-end;
+            padding: 5px;
+            padding-right: 2%;
+            /*background-color: #b21f2d*/;
+            text-align: right;
+        }
+
+
+        .somos {
+            height: 600px;
+
+        }
+
+        .detalle {
+            background-color: #fff; /*Default bg, similar to the background's base color*/
+        }
+
+        .tit1 {
+            font-weight: 600;
+            font-size: 46px;
+            margin-bottom: 20px;
+        }
+
+        .tit2 {
+            font-weight: 500;
+            font-size: 50px;
+        }
+
+        .par {
+            max-width: 80%;
+            margin-left: 10%;
+        }
+
+        .par2 {
+            max-width: 80%;
+        }
+
+        .owl-carousel img {
+            width: 75% !important;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .carousel-control-prev-icon {
+            background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA2NCA2NDsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDY0IDY0IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiMxMzQ1NjM7fQo8L3N0eWxlPjxnPjxnIGlkPSJJY29uLUNoZXZyb24tTGVmdCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjM3LjAwMDAwMCwgMzM1LjAwMDAwMCkiPjxwb2x5bGluZSBjbGFzcz0ic3QwIiBpZD0iRmlsbC0zNSIgcG9pbnRzPSItMTk5LjEsLTI4OSAtMjEyLjksLTMwMi43IC0xOTkuMSwtMzE2LjQgLTE5Ny4xLC0zMTQuNCAtMjA4LjksLTMwMi43IC0xOTcuMSwtMjkxICAgICAgLTE5OS4xLC0yODkgICAgIi8+PC9nPjwvZz48L3N2Zz4=");
+            background-size: 200%;
+        }
+
+        .carousel-control-next-icon {
+            background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA2NCA2NDsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDY0IDY0IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiMxMzQ1NjM7fQo8L3N0eWxlPjxnPjxnIGlkPSJJY29uLUNoZXZyb24tTGVmdCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjM3LjAwMDAwMCwgMzM1LjAwMDAwMCkiPjxwb2x5bGluZSBjbGFzcz0ic3QwIiBpZD0iRmlsbC0zNSIgcG9pbnRzPSItMjEwLjksLTI4OSAtMjEyLjksLTI5MSAtMjAxLjEsLTMwMi43IC0yMTIuOSwtMzE0LjQgLTIxMC45LC0zMTYuNCAtMTk3LjEsLTMwMi43ICAgICAgLTIxMC45LC0yODkgICAgIi8+PC9nPjwvZz48L3N2Zz4=");
+            background-size: 200%;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 200px;
+        }
+
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            text-align: center;
+            line-height: 10px;
+            font-size: 12px;
+            color: #000;
+            opacity: 1;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .swiper-pagination-bullet-active {
+            color: #fff;
+            background: #007aff;
+        }
+
+        .logo-grid {
+            /*height: 60px;*/
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+        }
+
+        .contacto {
+            width: 100%;
+            height: auto;
+            background-color: #f1f1f1;
+        }
+
+        .contacto .temas {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: block;
+            /*background-color:#1e3c72 ;*/
+            padding: 15px;
+            padding-left: 55px;
+            color: #FFFFFF;
+            float: left;
+        }
+
+        .label-contacto {
+            font-weight: 200;
+            font-size: 24px;
+            margin-bottom: 40px;
+            text-align: center;
+            width: 100%;
+
+        }
+
+        .contacto .formacontacto {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: block;
+            padding: 15px;
+            color: #FFFFFF;
+            float: left;
+        }
+
+        .pie {
+            background-color: #001222;
+        }
+
+        /* Customize the label (the container) */
+        .contenedor {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Hide the browser's default checkbox */
+        .contenedor input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        /* Create a custom checkbox */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .contenedor:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+        .contenedor input:checked ~ .checkmark {
+            background-color: #2196F3;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+        .contenedor input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        /* Style the checkmark/indicator */
+        .contenedor .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        /* Style the input fields */
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            outline: none;
+        }
+
+        .input-field:focus {
+            border: 2px solid dodgerblue;
+            outline: none !important;
+            outline-width: 0 !important;
+            box-shadow: none;
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+        }
+
+        .input-group-text {
+            border-radius: 0;
+        }
+
+        .form-control {
+            border: 0;
+        }
+
+        .spl {
+            padding-left: 0;
+        }
+
+        .cpr {
+            padding-right: 15px;
+        }
+
+        @media (max-width: 1024px) {
+            .spl {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .cpr {
+                padding-right: 0;
+            }
+        }
+
+        .logoredes {
+            display: none;
+            visibility: hidden;
+        }
+
+        @media (min-width: 1024px) {
+            .logoredes {
+                display: block;
+                visibility: visible;
+            }
+        }
+
+        .logoredes a {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-right: 20px;
+        }
+
+        .logoprincipal {
+            width: 75%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .mapas {
+            width: 100%;
+            height: 500px;
+            background-color: #FFFFFF;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .holder {
+            width: 100%;
+            height: 500px;
+            position: relative;
+        }
+
+        .framemapa {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .bar {
+            position: absolute;
+            display: block ;
+            top: 10%;
+            right: 10%;
+            width: 20%;
+            height: 80%;
+            background-color: #ffffff;
+            z-index: 999;
+            border-radius: 6px;
+        }
+
+        .card {
+            /*opacity: .8;*/
+            background-color: #2b2848;
+            width: 94%;
+            height: 94%;
+            top: 3%;
+            left: 3%;
+            border-radius: 0;
+            color: #ffffff;
+            padding: 10px;
+            border: 1px solid #ffffff;
+            border-radius: 6px;
+
+        }
+
+        .card .info {
+            background-color: #ffffff;
+
+        }
+
+        .icono {
+            color: #74ED88; /*#FFFF00;*/
+            font-size: 30px;
+            font-weight: 100;
+        }
+
+        .lbl-ubicacion {
+            color: #ffffff;
+            font-weight: 200;
+            font-size: 1.2em;
+        }
+
+        .lbl-telefonos {
+            color: #ffffff;
+            font-weight: 200;
+            font-size: 1.1em;
+        }
+
+        .barra {
+            padding-top: 1.5rem !important;
+            margin-bottom: 1.5rem !important;
+            width: 100% !important;
+        }
+
+        .barra-top {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1030;
+            visibility: visible;
+            background-color: #001222;
+            opacity: 0.9;
+            animation: mymove 0.5s ease-in-out;
+        }
+
+        .barsmall {
+            display: none;
+            position: relative;
+            margin-top: 10px;
+            width: 100%;
+            height: auto
+            background-color: #ffffff;
+            z-index: 999;
+            border-radius: 6px;
+        }
+
+        @keyframes mymove {
+            from {
+                top: -50px;
+            }
+            to {
+                top: 0px;
+            }
+        }
+
+        .parrafo{
+            font-size: 1.5rem;
+        }
+
+        .float{
+            position:fixed;
+            width:60px;
+            height:60px;
+            bottom:40px;
+            right:40px;
+            background-color:#25d366;
+            color:#FFF;
+            border-radius:50px;
+            text-align:center;
+            font-size:30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index:999999;
+        }
+
+        a.float:hover{
+            color:#ffffff;
+        }
+
+        .my-float{
+            margin-top:16px;
+        }
+
+        a.lbl-telefonos:hover{
+            color:#ffffff;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="pre-loader">
+    <div class="cargando">
+        <div class="sk-fading-circle">
+            <div class="sk-circle1 sk-circle"></div>
+            <div class="sk-circle2 sk-circle"></div>
+            <div class="sk-circle3 sk-circle"></div>
+            <div class="sk-circle4 sk-circle"></div>
+            <div class="sk-circle5 sk-circle"></div>
+            <div class="sk-circle6 sk-circle"></div>
+            <div class="sk-circle7 sk-circle"></div>
+            <div class="sk-circle8 sk-circle"></div>
+            <div class="sk-circle9 sk-circle"></div>
+            <div class="sk-circle10 sk-circle"></div>
+            <div class="sk-circle11 sk-circle"></div>
+            <div class="sk-circle12 sk-circle"></div>
+        </div>
+    </div>
+</div>
+
+<section id="inicio">
+    <div id="encabezado" class="encabezado w-100">
+        <header class="w-100">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg barra" id="navbar1">
+                    <div class="logomenu">
+                        <a class="navbar-brand" href="#">
+                            <img src="img/logo05.png" class="logoprincipal">
+                        </a>
+                    </div>
+                    <div class="menu">
+                        <nav class="navbar navbar-expand-lg navbar-light w-100" id="navbar1content">
+                            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item active">
+                                        <a class="nav-link f-blanco ligaprin" href="#inicio">INICIO<span
+                                                class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link f-blanco ligaprin" href="#nosotros">NUESTRA EMPRESA</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link f-blanco ligaprin" href="#productos">SOLUCIONES
+                                            TECNOLOGICAS</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link f-blanco ligaprin" href="#contacto">CONTACTO</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link f-blanco ligaprin" href="#" data-toggle="modal" data-target="#modalBlog">BLOG</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="redes justify-content-end">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarS1" aria-controls="navbarS1"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"><i class="fas fa-bars" style="color:#ffffff"></i></span>
+                        </button>
+                        <div class="logoredes">
+                            <a href="https://www.facebook.com/TIConsultor.mx" target="_blank"><i
+                                    class="fab fa-facebook-f 5x"></i></a>
+                            <a href="https://www.instagram.com/ticonsultormx/?igshid=ztbx08lsm3vb" target="_blank"> <i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="container-fluid text-right" style="padding-right: 5%">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarS1">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link f-blanco ligaprin" href="#inicio">INICIO<span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link f-blanco ligaprin" href="#nosotros">NUESTRA EMPRESA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link f-blanco ligaprin" href="#productos">SOLUCIONES
+                                TECNOLOGICAS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link f-blanco ligaprin" href="#contacto">CONTACTO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link f-blanco ligaprin" href="#">BLOG</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <section id="slide" class="w-100">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <div id="carousel1" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="info">
+                                        <div class="container vcenter" style="height: 500px;">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div>
+                                                        <h1 class="f-roboto">ADMINTOTAL</h1>
+                                                    </div>
+                                                    <div>
+                                                        <p class="parrafo">Deja de imaginarte como seria tener el control de toda la información de tu empresa y hazlo una realidad con ADMINTOTAL
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <a href="#contacto">
+                                                            <button type="button" class=" btn btn-success">Contáctanos
+                                                            </button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="info">
+                                        <div class="container vcenter" style="height: 500px;">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div>
+                                                        <h1 class="f-roboto"> QuickBooks</h1>
+                                                    </div>
+                                                    <div>
+                                                        <p class="parrafo">Genera facturas ilimitadas, lleva la contabilidad de tu empresa y monitorea tus ventas,<br> gastos y cuentas para tener la información en tiempo real de tu negocio al alcance de la mano, siempre.
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <a href="#contacto">
+                                                            <button type="button" class=" btn btn-success">Contáctanos
+                                                            </button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="info">
+                                        <div class="container vcenter" style="height: 500px;">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div>
+                                                        <h1 class="f-roboto">Partner lenovo</h1>
+                                                    </div>
+                                                    <div>
+                                                        <p class="parrafo">Soluciones para las empresas y las personas, consultoría especializada para cada necesidad.
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <a href="#contacto">
+                                                            <button type="button" class=" btn btn-success">Contáctanos
+                                                            </button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carousel1" role="button" data-slide="prev"
+                               style="width: 5%">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel1" role="button" data-slide="next"
+                               style="width: 5%">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+<section id="nosotros" class="w-100 seccion" style="height: auto">
+    <div class="container-fluid" style="padding-right: 0; padding-left: 0;">
+        <div class="row m-0 justify-content-center somos">
+            <div class="col-lg-6 col-md-12 mt-5 mt-lg-0 text-center vcenter justify-content-center detalle">
+                <div style="padding: 0 10%">
+                    <h1 class="f-montse tit1 wow slideInLeft">Nuestra Empresa</h1>
+                    <p class="text-justify par wow slideInUp ">TIConsultor es una empresa mexicana que brinda servicios de calidad en el área de las Tecnologías de la Información, procurando siempre, el crecimiento y desarrollo de nuestros clientes.</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 text-center"
+                 style="background-image: url('img/oficina02.jpg'); background-position: center; background-size: cover">
+            </div>
+
+        </div>
+        <div class="row text-center justify-content-center m-0 somos">
+            <div class="col-lg-6 col-md-12 d-none d-sm-none d-md-none d-lg-block d-xl-block" style="background-image: url('img/escritorio02.jpg')">
+            </div>
+            <div class="col-lg-6 col-md-12 vcenter">
+                <div style="padding: 0 10%">
+                    <div class="row justify-content-center">
+                        <h2 class="py-3 f-montse tit1 wow slideInRight">Misión</h2>
+                    </div>
+                    <div class="row justify-content-center">
+                        <p class=" text-justify par2 wow slideInUp">Crear propuestas de valor en las diferentes áreas de la informática que permita a las empresas y a las personas, el uso de tecnologías de vanguardia.</p>
+                    </div>
+                    <div class="row justify-content-center">
+                        <h2 class="py-3 f-montse tit1 wow slideInRight">Visión</h2>
+                    </div>
+                    <div class="row justify-content-center wow slideInUp">
+                        <p class="text-justify par2">Ser un centro de conocimiento tecnológico que provea propuestas disruptivas y metodologías de uso, para la aplicación de la informática en la vida diaria.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0  justify-content-center somos">
+            <div class="col-lg-6 col-md-12 text-center vcenter">
+                <div style="padding: 0 10%">
+                    <h2 class="py-3 f-montse tit1 wow slideInLeft">Valores</h2>
+                    <p class="text-justify par wow slideInUp">
+                        <b>Pasión</b>: cada especialista está dedicado a su área para dar mucho más allá de lo que se pretende, esto es porque, nos encanta nuestro trabajo.<br><br>
+                        <b>Honestidad</b>: comprendemos el sentir de colocar cada peso en la propuesta correcta, de forma duradera y con retornos de inversión favorables.<br><br>
+                        <b>Responsabilidad</b>: los compromisos son la piedra angular de la empresa, cada proyecto lo adoptamos como propio sensibilizándonos con nuestros clientes.<br><br>
+                        <b>Servicio al cliente</b>: El cliente de mi cliente es primero, por lo que nos esforzamos cada día para fortalecer las alianzas y superar las expectativas.<br><br>
+                        <b>Trabajo en equipo</b>: creemos que juntos logramos más y mejores cosas, por lo que buscamos sumar al equipo personas con vocación y pasión por sus actividades.
+
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 d-none d-sm-none d-md-none d-lg-block d-xl-block" style="background-image: url('img/exito02.jpg')">
+            </div>
+        </div>
+    </div>
+</section>
+<section id="casosexito" class="w-100 bg-light seccion">
+    <div class="container">
+        <div class="row pt-5 pb-3 mb-5">
+            <div class="col text-center">
+                <h1 class="f-montse tit2 wow flipInX">Casos de Éxito</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row py-5">
+            <div class="col">
+                <div class="owl-carousel owl-theme">
+                    <div class="item">
+                        <img src="img/clientes/01_1reinssa.png">
+                    </div>
+                    <div class="item align-content-center">
+                        <img src="img/clientes/01_2aras.png">
+                    </div>
+                    <div class="item">
+                        <img src="img/clientes/01_3artesgraficas.png">
+                    </div>
+                    <div class="item align-content-center">
+                        <img src="img/clientes/01_4blindotex.png">
+                    </div>
+                    <div class="item">
+                        <img src="img/clientes/01_5energas.png">
+                    </div>
+                   <!-- <div class="item align-content-center">
+                        <img src="img/clientes/01_6flowgasket.png">
+                    </div>-->
+
+                    <div class="item">
+                        <img src="img/clientes/02_1resisa.png">
+                    </div>
+                    <div class="item align-content-center">
+                        <img src="img/clientes/02_2canaco.png">
+                    </div>
+                   <!-- <div class="item">
+                        <img src="img/clientes/02_3cortez.jpg">
+                    </div>-->
+                    <div class="item align-content-center">
+                        <img src="img/clientes/02_4grupo3gb.png">
+                    </div>
+                    <div class="item">
+                        <img src="img/clientes/02_5grupoelga.png">
+                    </div>
+                    <div class="item align-content-center">
+                        <img src="img/clientes/02_6innova.png">
+                    </div>
+
+                    <div class="item">
+                        <img src="img/clientes/03_1applied.png">
+                    </div>
+                  <!--  <div class="item align-content-center">
+                        <img src="img/clientes/03_2barrtires.jpg">
+                    </div>-->
+                    <div class="item">
+                        <img src="img/clientes/03_3lagat.png">
+                    </div>
+                    <div class="item align-content-center">
+                        <img src="img/clientes/03_4sierra.png">
+                    </div>
+                    <div class="item">
+                        <img src="img/clientes/03_5ith.png">
+                    </div>
+                    <div class="item align-content-center">
+                        <img src="img/clientes/03_6otr.png">
+                    </div>
+
+
+                    <div class="item">
+                        <img src="img/clientes/04_1vaesyco.png">
+                    </div>
+                    <div class="item align-content-center">
+                        <img src="img/clientes/04_2nnllantasservicios.png">
+                    </div>
+                    <div class="item">
+                        <img src="img/clientes/04_3sandblast.png">
+                    </div>
+                    <div class="item align-content-center">
+                        <img src="img/clientes/04_4seinmex.png">
+                    </div>
+                    <div class="item">
+                        <img src="img/clientes/04_5skinmedica.png">
+                    </div>
+                    <div class="item align-content-center">
+                        <img src="img/clientes/04_6snap.png">
+                    </div>
+                    <div class="item align-content-center">
+                        <img src="img/clientes/04_7termocontrol.png">
+                    </div>
+
+                    <div class="item">
+                        <img src="img/clientes/05_1agro.png">
+                    </div>
+                    <div class="item align-content-center">
+                        <img src="img/clientes/05_2diagro.png">
+                    </div>
+                    <div class="item">
+                        <img src="img/clientes/05_3fgm.png">
+                    </div>
+                    <div class="item align-content-center">
+                        <img src="img/clientes/05_4pavlo.png">
+                    </div>
+                    <div class="item">
+                        <img src="img/clientes/05_5src.png">
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>  <!--clientes-->
+    <div class="container">
+        <div class="row py-5 px-0 px-lg-5">
+            <div class="col">
+                <div id="carousel2" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 ">
+                                    <iframe class="framecar" width="100%" height="315"
+                                            src="https://www.youtube.com/embed/bkFiWnfGRdw?enablejsapi=1&rel=0"
+                                            frameborder="0"></iframe>
+                                </div>
+                                <div class="col-lg-6 col-md-12 mt-3 mt-md-3">
+                               <span class=" h-100 justify-content-center text-center vcenter font-italic testimonio">
+                                   “Estamos en la era de la industria 4.0, el momento de hacer uso de las herramientas tecnologías a favor de la humanidad y su entorno; la tecnología no desplaza al humano, lo hace más productivo”<br><br>
+                                   Ing. Richard Lizarraga Basto <br> CEO Bigdata Business Developers SAS de CV
+                               </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="carousel-item">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 d-none d-sm-none d-md-block d-lg-block d-xl-block">
+                                    <iframe class="framecar" width="100%" height="315"
+                                            src="https://www.youtube.com/embed/uxlOPJC3NzY?enablejsapi=1&rel=0"
+                                            frameborder="0"></iframe>
+                                </div>
+                                <div class="col-lg-6 col-md-12 mt-md-2">
+                             <span class=" h-100 justify-content-center text-center vcenter font-italic testimonio">
+                                   "La mejor experiencia de compra en Sonora. Estamos muy agradecidos con el personal tan profesional."<br><br>
+                                   Mercedes Carballo. <br> Taller el General
+                               </span>
+                                </div>
+                            </div>
+
+                        </div>-->
+                    </div>
+                   <!-- <a class="carousel-control-prev controls" href="#carousel2" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next controls" href="#carousel2" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+<section id="marcas" class="bg-uno">
+    <div class="container">
+        <!-- Slider main container -->
+        <div class="swiper-container vcenter">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide logo-grid"><img src="img/marcas/hp01.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/lenovo01.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/apple01.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/acer01.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/ghia01.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/dell01.png" class="marcas"></div>
+
+                <div class="swiper-slide logo-grid"><img src="img/marcas/autodesk01.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/brother.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/canon.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/cdp.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/dahua.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/d-link.png" class="marcas"></div>
+
+                <div class="swiper-slide logo-grid"><img src="img/marcas/eaton.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/eset.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/genius.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/granstream.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/hikvision.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/hilook.png" class="marcas"></div>
+
+                <div class="swiper-slide logo-grid"><img src="img/marcas/huawei01.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/kaspersky.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/msi.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/ocelot.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/optoma.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/panasonic.png" class="marcas"></div>
+
+                <div class="swiper-slide logo-grid"><img src="img/marcas/plantonics.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/pny.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/provision01.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/sandisk.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/sony.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/sophos01.png" class="marcas"></div>
+
+                <div class="swiper-slide logo-grid"><img src="img/marcas/startech.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/tenda01.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/tomi.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/totalplay.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/trendnet.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/tripplite.png" class="marcas"></div>
+
+                <div class="swiper-slide logo-grid"><img src="img/marcas/ubiquiti.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/viewsonic.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/vmware.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/westerndigital.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/zebra.png" class="marcas"></div>
+                <div class="swiper-slide logo-grid"><img src="img/marcas/zkteco.png" class="marcas"></div>
+
+
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>-->
+
+            <!-- If we need scrollbar
+            <div class="swiper-scrollbar"></div>-->
+        </div>
+
+
+    </div>
+
+
+</section>
+<section id="productos" class="bg-light pb-5">
+    <div class="container">
+        <div class="row pt-5 pb-5 mb-5">
+            <div class="col text-center">
+                <h1 class="f-montse tit2 wow flipInX">Soluciones Tecnológicas</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-3 col-md-4 colprod">
+                <div class="tarjeta-wrap">
+                    <div class="tarjeta gradient3">
+                        <div class="adelante">
+                            <div class="sa">
+                                <div class="inside vcenter">
+                                    <p class="text-white w-100">Sistemas administrativos</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="atras">
+                            <div class="container text-center">
+                                <div class="row pb-2">
+                                    <div class="col-6 mt-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <img src="img/admintotal04.png" data-toggle="modal" data-target="#modalAdminTotal" class="img-fluid saimg"
+                                             />
+                                    </div>
+                                    <div class="col-6 mt-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <img src="img/misclientes01.png"  data-toggle="modal" class="img-fluid saimg"
+                                             data-target="#modalMisClientes"/>
+                                    </div>
+                                    <div class="col-6  mt-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <img src="img/contpaqi02.png" data-toggle="modal" class="img-fluid saimg"
+                                             data-target="#modalContpaq"/>
+                                    </div>
+
+                                    <div class="col-6 mt-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <img src="img/ava01.png" data-toggle="modal" class="img-fluid saimg"
+                                             data-target="#modalAVA"/>
+                                    </div>
+                                    <div class="col-6  mt-3 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <img src="img/aspel01.png" data-toggle="modal" class="img-fluid saimg"
+                                             data-target="#modalAspel"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3 col-md-4 mt-3 mt-sm-3 mt-md-0 mt-lg-0 mt-xl-0 colprod">
+                <div class="tarjeta-wrap">
+                    <div class="tarjeta gradient3">
+                        <div class="adelante">
+                            <div class="soft">
+                                <div class="inside vcenter">
+                                    <p class="text-white w-100">Software</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="atras">
+                            <div class="container p-0">
+                                <div class="row mt-3 mb-3">
+                                    <div class="col-12 mb-3 ">
+                                        <img src="img/soft/micro.png" class="img-fluid mr-2" style="width: 1.2rem!important;">
+                                        <label class="text-dark f-roboto" data-toggle="modal"
+                                               data-target="#modalMicrosoft">Licencias Microsoft</label>
+                                    </div>
+
+
+                                    <div class="col-12 mb-3">
+                                        <img src="img/soft/antivirus.png" class="img-fluid mr-2" style="width: 1.2rem!important;">
+                                        <label class="text-dark f-roboto" data-toggle="modal" data-target="#modalAntivirus">Licencias Antivirus</label>
+                                    </div>
+
+
+                                    <div class="col-12 ">
+                                        <img src="img/soft/espe.png" class="img-fluid mr-2"  style="width: 1.2rem!important;">
+                                        <label class="text-dark f-roboto" data-toggle="modal" data-target="#modalEspecializado">Licencias especiales</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3 col-md-4  mt-3 mt-sm-3 mt-md-0 mt-lg-0 mt-xl-0 colprod">
+                <div class="tarjeta-wrap">
+                    <div class="tarjeta gradient3">
+                        <div class="adelante">
+                            <div class="hard">
+                                <div class="inside vcenter">
+                                    <p class="text-white w-100">Hardware</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="atras">
+                            <div class="container p-0">
+                                <div class="row pb-2 justify-content-center">
+                                    <div class="col-3 text-right">
+                                        <img src="img/hard/computo.png" class="img-fluid" style="width: 1.5rem!important;">
+                                    </div>
+                                    <div class="col-5 text-left">
+                                        <label class="text-dark f-roboto" data-toggle="modal"
+                                               data-target="#modalEquipo">Cómputo</label>
+                                    </div>
+                                </div>
+                                <div class="row pb-2 justify-content-center">
+                                    <div class="col-3 text-right">
+                                        <img src="img/hard/impresion.png" class="img-fluid" style="width: 1.5rem!important;">
+                                    </div>
+                                    <div class="col-5 text-left">
+                                        <label class="text-dark f-roboto" data-toggle="modal"
+                                               data-target="#modalImpresion">Impresión</label>
+                                    </div>
+                                </div>
+                                <div class="row pb-2 justify-content-center">
+                                    <div class="col-3 text-right">
+                                        <img src="img/hard/accesorios.png" class="img-fluid" style="width: 1.5rem!important;">
+                                    </div>
+                                    <div class="col-5 text-left">
+                                        <label class="text-dark f-roboto" data-toggle="modal"
+                                               data-target="#modalAccesorios">Accesorios</label>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-3 text-right">
+                                        <img src="img/hard/energia.png" class="img-fluid" style="width: 1.5rem!important;">
+                                    </div>
+                                    <div class="col-5 text-left">
+                                        <label class="text-dark f-roboto" data-toggle="modal"
+                                               data-target="#modalEnergia">Energía</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3 col-md-4 mt-3 mt-sm-3 mt-md-3 mt-lg-0 mt-xl-0 colprod">
+                <div class="tarjeta-wrap">
+                    <div class="tarjeta gradient3">
+                        <div class="adelante">
+                            <div class="net">
+                                <div class="inside vcenter">
+                                    <p class="text-white w-100">Networking</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="atras">
+                            <div class="container text-center">
+                                <div class="row justify-content-center">
+                                    <div class="col-4 col-sm-4 col-md-6 col-lg-6">
+                                        <img src="img/net1.png" class="img-fluid mb-2 w-25">
+                                        <label class="text-dark f-roboto w-100 texto2">Cableado estructurado</label>
+                                    </div>
+                                    <div class="col-4 col-sm-4 col-md-6 col-lg-6">
+                                        <img src="img/net2.png" class="img-fluid mb-2 w-25">
+                                        <label class="text-dark f-roboto w-100 texto2">Telefonía convencional e IP</label>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-4 col-sm-4 col-md-6 col-lg-6">
+                                        <img src="img/net3.png" class="img-fluid mb-2 w-25">
+                                        <label class="text-dark f-roboto w-100 texto2">Conectividad</label>
+                                    </div>
+                                    <div class="col-4 col-sm-4 col-md-6 col-lg-6">
+                                        <img src="img/net4.png" class="img-fluid mb-2 w-25">
+                                        <label class="text-dark f-roboto w-100 texto2">Internet para negocios</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--</div>
+        <div class="row pt-5">-->
+            <div class="col-12 col-lg-3 col-md-4 mt-3 mt-sm-3 mt-md-3 mt-lg-3 mt-xl-3  colprod">
+                <div class="tarjeta-wrap">
+                    <div class="tarjeta gradient3">
+                        <div class="adelante">
+                            <div class="inter">
+                                <div class="inside vcenter">
+                                    <p class="text-white w-100">Presencia en Internet</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="atras">
+                            <div class="container text-center m-0">
+                                <div class="row justify-content-center mt-3 mb-3">
+                                    <div class="col-4 col-sm-4 col-md-6 col-lg-6">
+                                        <img src="img/internet/inter01.png" class="img-fluid w-25">
+                                        <label class="text-dark f-roboto w-100 texto2">Desarrollo Web</label>
+                                    </div>
+                                    <div class="col-4 col-sm-4 col-md-6 col-lg-6">
+                                        <img src="img/internet/inter03.png" class="img-fluid w-25">
+                                        <label class="text-dark f-roboto w-100 texto2">Venta en Linea</label>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center mt-3 mb-3">
+                                    <div class="col-4 col-sm-4 col-md-6 col-lg-6">
+                                        <img src="img/internet/inter02.png" class="img-fluid w-25">
+                                        <label class="text-dark f-roboto w-100 texto2">Redes sociales</label>
+                                    </div>
+                                    <div class="col-4 col-sm-4 col-md-6 col-lg-6">
+                                        <img src="img/internet/inter04.png" class="img-fluid w-25">
+                                        <label class="text-dark f-roboto w-100 texto2">Soluciones cloud</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3 col-md-4 mt-3 mt-sm-3 mt-md-3 mt-lg-3 mt-xl-3 colprod">
+                <div class="tarjeta-wrap">
+                    <div class="tarjeta gradient3">
+                        <div class="adelante">
+                            <div class="soporte">
+                                <div class="inside vcenter">
+                                    <p class="text-white w-100">Soporte técnico</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="atras">
+                            <div class="container text-center">
+                                <div class="row pb-3 justify-content-center">
+
+                                    <div class="col-6 col-sm-4 col-md-6 pt-3">
+                                        <img src="img/st1.png" class="img-fluid w-25">
+                                        <label class="text-dark f-roboto w-100" >Reparaciones</label>
+                                    </div>
+                                    <div class="col-6 col-sm-4 col-md-6 pt-3">
+                                        <img src="img/st2.png" class="img-fluid w-25">
+                                        <label class="text-dark f-roboto w-100" >Instalaciones</label>
+                                    </div>
+                                    <div class="col-6 col-sm-4 col-md-6 pt-3 text-center">
+                                        <img src="img/st3.png" class="img-fluid w-25">
+                                        <label class="text-dark f-roboto w-100" >Actualizaciones</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3 col-md-4 mt-3 mt-sm-3 mt-md-3 mt-lg-3 mt-xl-3 colprod">
+                <div class="tarjeta-wrap">
+                    <div class="tarjeta gradient3">
+                        <div class="adelante">
+                            <div class="segu">
+                                <div class="inside vcenter">
+                                    <p class="text-white w-100">Seguridad Perimetral</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="atras">
+                            <div class="container text-center">
+                                <div class="row pb-3 justify-content-center">
+                                    <div class="col-6 mb-2">
+                                        <img src="img/segu1.png" class="img-fluid w-25">
+                                        <label class="text-dark f-roboto w-100 texto2">Alarmas</label>
+                                    </div>
+                                    <!--<div class="col-4 mb-2">
+                                        <img src="img/segu2.png" class="img-fluid w-25">
+                                        <label class="text-dark f-roboto w-100 texto2">Sensores de Movimiento</label>
+                                    </div>-->
+                                    <div class="col-6 mb-2">
+                                        <img src="img/segu3.png" class="img-fluid w-25">
+                                        <label class="text-dark f-roboto w-100 texto2">Cámaras</label>
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="img/segu4.png" class="img-fluid w-25" style="width: 20%!important;">
+                                        <label class="text-dark f-roboto w-100 texto2">Chapas de seguridad</label>
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="img/segu5.png" class="img-fluid w-25" style="width: 20%!important;">
+                                        <label class="text-dark f-roboto w-100 texto2">Cercas electrificadas</label>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3 col-md-4 mt-3 mt-sm-3 mt-md-3 mt-lg-3 mt-xl-3 colprod">
+                <div class="tarjeta-wrap">
+                    <div class="tarjeta gradient3">
+                        <div class="adelante">
+                            <div class="ecom">
+                                <div class="inside vcenter">
+                                    <p class="text-white w-100">e-commerce</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="atras">
+                            <p class="text-dark f-roboto w-100">Ofrecemos a nuestros clientes la oportunidad de comprar
+                                en línea.Contáctanos para más información</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--</div>-->
+        </div>
+    </div>
+</section>
+<section id="ubicacion">
+    <div class="container mt-5 mb-5">
+        <div class="row text-center">
+            <div class="col">
+                <h1 class="f-montse tit2 wow flipInX">Contacto</h1>
+            </div>
+        </div>
+
+    </div>
+    <div class="container-fluid mapas p-0">
+        <div class="row m-0">
+            <div class="holder">
+                <div class="bar">
+                    <div class="card gradient3">
+                        <div class="row text-center">
+                            <div class="col-12 text-center" style="line-height: 60px;">
+                                <i class="fas fa-map-marker-alt icono"></i>
+                            </div>
+                        </div>
+                        <div class="row text-center mb-3">
+                            <div class="col-12 text-center">
+                                <label class="lbl-ubicacion">José Obregón #145.<br> Hermosillo, Sonora, México</label>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-3 text-center">
+                                <i class="fas fa-phone-square-alt icono"></i>
+                            </div>
+                            <div class="col-9 text-left pl-0">
+                                <label class="lbl-telefonos">662 302 6902</label>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-3 text-center"><i class="fab fa-whatsapp icono"></i></div>
+                            <div class="col-9 text-left pl-0"><label class="lbl-telefonos">662 168 6634</label></div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-3 text-center"><i class="fab fa-facebook-square icono"></i></div>
+                            <div class="col-9 text-left pl-0"><a class="lbl-telefonos" target="_blank" href="https://www.facebook.com/TIConsultor.mx">BigData</a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 text-center"><i class="fab fa-instagram icono"></i></div>
+                            <div class="col-9 text-left pl-0"><a class="lbl-telefonos" target="_blank" href="https://www.instagram.com/ticonsultormx/?igshid=ztbx08lsm3vb">BigData</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <iframe class="framemapa"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4930.8849869054075!2d-110.98330792335315!3d29.08612508731477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86ce8521ed208567%3A0x5eb57b209c9fc38!2sTIConsultor!5e0!3m2!1ses-419!2smx!4v1609891179056!5m2!1ses-419!2smx"
+                        allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row ">
+            <div class="barsmall">
+                <div class="card gradient3">
+                    <div class="row text-center">
+                        <div class="col-12 text-center" style="line-height: 60px;">
+                            <i class="fas fa-map-marker-alt icono"></i>
+                        </div>
+                    </div>
+                    <div class="row text-center mb-3">
+                        <div class="col-12 text-center">
+                            <label class="lbl-ubicacion">José Obregón #145.<br> Hermosillo, Sonora, México</label>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-3 text-center">
+                            <i class="fas fa-phone-square-alt icono"></i>
+                        </div>
+                        <div class="col-9 text-left pl-0">
+                            <label class="lbl-telefonos">662 302 6902</label>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-3 text-center"><i class="fab fa-whatsapp icono"></i></div>
+                        <div class="col-9 text-left pl-0"><label class="lbl-telefonos">662 168 6634</label></div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-3 text-center"><i class="fab fa-facebook-square icono"></i></div>
+                        <div class="col-9 text-left pl-0"><a class="lbl-telefonos" target="_blank" href="https://www.facebook.com/TIConsultor.mx">BigData</a></div>
+                    </div>
+                    <div class="row pb-3">
+                        <div class="col-3 text-center"><i class="fab fa-instagram icono"></i></div>
+                        <div class="col-9 text-left pl-0"><a class="lbl-telefonos" target="_blank" href="https://www.instagram.com/ticonsultormx/?igshid=ztbx08lsm3vb">BigData</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contacto" class="bg-dos pb-5 pt-5">
+    <form id="formcontacto" action="contacto.php" method="post">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col spl">
+                    <h3 class="wow slideInLeft">¡Hagamos equipo!</h3>
+                </div>
+            </div>
+            <div class="row contacto">
+                <div class="col-lg-6 col-sm-12 spl">
+                    <div class="temas gradient3">
+                        <label class="label-contacto">¿Que solución te interesa?</label>
+                        <label class="contenedor">Sistemas Administrativos
+                            <input type="checkbox" id="checkSA" name="checkSA">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="contenedor">Software
+                            <input type="checkbox" id="checkSoftware" name="checkSoftware">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="contenedor">Hardware
+                            <input type="checkbox" id="checkHardware" name="checkHardware">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="contenedor">Networking
+                            <input type="checkbox" id="checkNet" name="checkNet">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="contenedor">Presencia en Internet
+                            <input type="checkbox" id="checkPresencia" name="checkPresencia">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="contenedor">Soporte técnico
+                            <input type="checkbox" id="checkSoporte" name="checkSoporte">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="contenedor">Seguridad perimetral
+                            <input type="checkbox" id="checkSeguridad" name="checkSeguridad">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="contenedor">e-commerce
+                            <input type="checkbox" id="checkEcom" name="checkEcom">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div class="formacontacto">
+                        <div class="row">
+                            <div class="col">
+                                <label class="label-contacto" style="color: #1e3c72;">Déjanos tus datos</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-4">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                                    <input type="text" class="form-control input-field" name="txtNombre" id="txtNombre"
+                                           placeholder="Nombre o razón social" aria-label="Nombre"
+                                           aria-describedby="basic-addon1">
+                                </div>
+                                <div class="input-group mb-4">
+                                    <span class="input-group-text" id="basic-addon2">@</span>
+                                    <input type="email" class="form-control input-field"
+                                           placeholder="Correo electrónico"
+                                           aria-label="Correo" id="txtCorreo" name="txtCorreo"
+                                           aria-describedby="basic-addon1">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon3"><i
+                                            class="fas fa-mobile-alt fa-lg"></i></span>
+                                    <input type="number" class="form-control input-field" placeholder="Teléfono"
+                                           maxlength="12"
+                                           aria-label="Telefono" id="txtTelefono" name="txtTelefono"
+                                           aria-describedby="basic-addon1">
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea class="form-control input-field mt-4"
+                                              placeholder="Escribe tu mensaje" maxlength="250" id="txtMensaje"
+                                              name="txtMensaje"
+                                              style="box-sizing: border-box"></textarea>
+                                </div>
+                                <button type="submit" id="btnEnviar" class="btn btn-success w-100">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</section>
+
+<footer class="pie" style="height: 300px; padding-top: 20px; color:#ffffff">
+    <div class="container">
+        <div class="row">
+            <div class="col-4 text-left pl-md-0 pl-lg-0">
+                <div class="container">
+                    <div class="row mb-3">
+                        <div class="col pl-0">
+                            <label style="color: #28a745;">Mapa del sitio</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col pl-0">
+                            <a href="#inicio" class="redespie">Inicio</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col pl-0">
+                            <a href="#nosotros" class="redespie">Nuestra Empresa</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col pl-0">
+                            <a href="#productos" class="redespie">Soluciones tecnológicas</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col pl-0">
+                            <a href="#ubicacion" class="redespie">Contacto</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col pl-0">
+                            <a href="#" data-toggle="modal" data-target="#modalBlog" class="redespie">Blog</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 text-center">
+                <div class="container">
+                    <div class="row mb-3">
+                        <div class="col-12 text-center">
+                            <label style="color: #28a745;">Legales</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+
+                            <a class="redespie" data-toggle="modal"
+                               data-target="#modalAviso">Aviso de privacidad</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <a class="redespie" data-toggle="modal"
+                               data-target="#modalTerminos">Términos y condiciones</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 text-right">
+                <div class="container">
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <label style="color: #28a745;">Social</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="https://www.facebook.com/TIConsultor.mx" target="_blank"
+                               class="redespie">Facebook</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="https://www.instagram.com/ticonsultormx/?igshid=ztbx08lsm3vb" target="_blank" class="redespie">Instagram</a>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            <label>Tiendas oficiales</label>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-lg-4 col-md-6">
+                            <a href="https://www.facebook.com/LikaCare" target="_blank" class="redespie"><img
+                                    src="img/redes/likacare.png" width="50"/></a>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <a href="https://www.facebook.com/LikaShopGo" target="_blank" class="redespie"><img
+                                    src="img/redes/likashop01.png" width="100%"/></a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col text-center">
+                <p>Copyright 2021. BigData Developers SAS de CV. Todos los derechos reservados.</p>
+            </div>
+
+        </div>
+
+
+    </div>
+</footer>
+
+<!-- Ventanas Modales -->
+<!-- AdminTotal -->
+<div class="modal fade" id="modalAdminTotal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center bg-dark">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-8">
+                            <img src="img/admintotal02.png" class="w-75">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                Admintotal es un sistema de gestión empresarial (ERP) en una plataforma web que
+                                permite la integración en tiempo real de todas las áreas de la empresa generando
+                                registros contables e información oportuna para la toma de decisiones.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center pt-3">
+                        <div class="col-4 col-sm-4 col-md-3 col-lg-2 ">
+                            <img src="img/adminbancos.png" class="w-100">
+                            <div class="text-center">Bancos</div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-3 col-lg-2">
+                            <img src="img/adminconta.png" class="w-100">
+                            <div class="text-center">Contabilidad</div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-3 col-lg-2">
+                            <img src="img/admincporc.png" class="w-100">
+                            <div class="text-center">Cuentas por Cobrar</div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-3 col-lg-2">
+                            <img src="img/admincporp.png" class="w-100">
+                            <div class="text-center">Cuentas por Pagar</div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-3 col-lg-2">
+                            <img src="img/adminejec.png" class="w-100">
+                            <div class="text-center">Ejecutivo</div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-3 col-lg-2">
+                            <img src="img/admininven.png" class="w-100">
+                            <div class="text-center">Inventario</div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-3 col-lg-2 pt-3">
+                            <img src="img/adminnom.png" class="w-100">
+                            <div class="text-center">Nómina</div>
+                        </div>
+                        <div class="col-4  col-sm-4 col-md-3 col-lg-2 pt-3">
+                            <img src="img/adminventas.png" class="w-100">
+                            <div class="text-center">Ventas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mis clientes CRM -->
+<div class="modal fade" id="modalMisClientes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center bg-dark">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-8">
+                            <img src="img/misclientes01.png" class="w-75">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                Mis Clientes CRM es una web App muy amigable y fácil de usar, que te permitirá
+                                detectar oportunamente las actividades clave para enfocar tus esfuerzos de venta, que
+                                te llevará a conseguir tus metas.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center text-center pt-3">
+                        <div class="col-6">
+                            <div class="text-primary font-weight-bold">Seguimiento</div>
+                            <div>Asegura el correcto seguimiento de tus oportunidades de venta</div>
+
+                        </div>
+                        <div class="col-6">
+                            <div class="text-primary font-weight-bold">Tiempo</div>
+                            <div>Ahorra tiempo para vender y vender MEJOR</div>
+                        </div>
+                        <div class="col-6 mt-3">
+                            <div class="text-primary font-weight-bold">Potenciales</div>
+                            <div>Asigna tus clientes potenciales a personas adecuadas</div>
+                        </div>
+                        <div class="col-6 mt-3">
+                            <div class="text-primary font-weight-bold">Resultados</div>
+                            <div>Resultados exitosos e inmediatos, 100% medibles</div>
+                        </div>
+                    <!--</div>
+                    <div class="row justify-content-center text-center">-->
+                        <div class="col-6 pt-3">
+                            <div class="text-primary font-weight-bold">Decisiones inteligentes</div>
+                            <div>Identifica actividades clave para alcanzar tus metas en tiempo y forma</div>
+                        </div>
+
+                        <div class="col-6 pt-3">
+                            <div class="text-primary font-weight-bold">Organiza actividades</div>
+                            <div>Agenda tus actividades vinculadas a las oportunidades de ventas</div>
+                        </div>
+                        <div class="col-6 pt-3">
+                            <div class="text-primary font-weight-bold">Simplifica y Agiliza</div>
+                            <div>Amplia visibilidad y estadísticas sobre tus pronósticos de venta</div>
+                        </div>
+                 <!--   </div>
+                    <div class="row justify-content-center text-center">-->
+                        <div class="col-6 pt-3">
+                            <div class="text-primary font-weight-bold">Establece metas</div>
+                            <div>¡Establece metas mensuales para cada vendedor y alcánzalas!</div>
+                        </div>
+                        <div class="col-6 pt-3">
+                            <div class="text-primary font-weight-bold">Evalúa</div>
+                            <div>Lleva un correcto seguimiento de tus contactos y clientes</div>
+                        </div>
+                        <div class="col-6 pt-3">
+                            <div class="text-primary font-weight-bold">Administra</div>
+                            <div>Administra y supervisa a tu equipo de ventas en todo momento y desde cualquier lugar
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- contpaqi -->
+<div class="modal fade" id="modalContpaq" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center bg-dark">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-8">
+                            <img src="img/contpaqi01.png" class="w-75">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row justify-content-center pt-3">
+                        <div class="col-6 col-sm-4 col-md-4 col-lg-3 text-center">
+                            <img src="img/contpaq/contpaq01.png" class="img-fluid w-75">
+                            <label class="mt-2 mb-2 texto1">Para analizar y mantener en orden tu información contable, fiscal y financiera</label>
+                        </div>
+                        <div class="col-6  col-sm-4 col-md-4 col-lg-3 text-center">
+                            <img src="img/contpaq/contpaq02.png" class="img-fluid w-75">
+                            <label class="mt-2 mb-2 texto1">Administra tu nómina y cumple en tiempo y forma con todas las obligaciones de ley</label>
+                        </div>
+                        <div class="col-6 col-sm-4 col-md-4 col-lg-3 text-center">
+                            <img src="img/contpaq/contpaq03.png" class="img-fluid w-75">
+                            <label class="mt-2 mb-2 texto1">Agiliza tus procesos de facturación, ventas y cobro</label>
+                        </div>
+                        <div class="col-6 col-sm-4 col-md-4 col-lg-3 text-center">
+                            <img src="img/contpaq/contpaq04.png" class="img-fluid w-75">
+                            <label class="mt-2 mb-2 texto1">Administra correctamente tu flujo de efectivo de forma sencilla</label>
+                        </div>
+                        <div class="col-6 col-sm-4 col-md-4 col-lg-3 text-center">
+                            <img src="img/contpaq/contpaq05.png" class="img-fluid w-75">
+                            <label class="mt-2 mb-2 texto1">Integra los procesos de tu negocio y obtén la productividad que necesitas</label>
+                        </div>
+                        <div class="col-6 col-sm-4 col-md-4 col-lg-3 text-center">
+                            <img src="img/contpaq/contpaq06.png" class="img-fluid w-75">
+                            <label class="mt-2 mb-2 texto1">Configura tu sistema comercial a tu medida y toma el control de todos tus departamentos</label>
+                        </div>
+                        <div class="col-6 col-sm-4 col-md-4 col-lg-3 text-center">
+                            <img src="img/contpaq/contpaq07.png" class="img-fluid w-75">
+                            <label class="mt-2 mb-2 texto1">Controla el ciclo compra venta, con inventarios a detalle en unidades de medida y peso, series, lotes, pedimentos</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AVA -->
+<div class="modal fade" id="modalAVA" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center bg-dark">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-8">
+                            <img src="img/ava01.png" class="w-50">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-center">
+                                AVA es un software de siguiente generación para las micro y pequeñas empresas. Está
+                                diseñado para facilitarte el registros de las ventas
+                                de tu negocio y el manejo oportuno de tus inventarios. Su interfaz es de las mejores en
+                                el mercado. Es sencillo de usar pero con todas las herrramientas
+                                que necesitas.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center text-center pt-3">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 mt-3">
+                            <img src="img/ava/ava01.png" class="img-fluid w-25">
+                            <div class="text-dark font-weight-bold">Moderno</div>
+                            <div>Interfaz diseñada para que encuentres lo que
+                                necesitas, cuando lo necesitas. Olvídate de los
+                                engorrosos menús y de las ventanas
+                                interminables
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 mt-3">
+                            <img src="img/ava/ava02.png" class="img-fluid w-25">
+                            <div class="text-dark font-weight-bold">Fácil de aprender</div>
+                            <div>Con AVA, aprender es sencillo. No necesitas semanas de
+                                cursos. Con nuestros videotutoriales y asesoría en un
+                                par de semanas serás un experto
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 mt-3 ">
+                            <img src="img/ava/ava03.png" class="img-fluid w-25">
+                            <div class="text-dark font-weight-bold">Instalacion sencilla</div>
+                            <div>¿Quieres instalar un punto de venta pero
+                                necesitas frameworks, codecs y conectores?
+                                Olvidalo. Haz clic en instalar y tendrás AVA Punto
+                                de Venta
+                            </div>
+                        </div>
+                    <!--</div>
+                    <div class="row justify-content-center text-center pt-3">-->
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 mt-3">
+                            <img src="img/ava/ava04.png" class="img-fluid w-25">
+                            <div class="text-dark font-weight-bold">Seguro</div>
+                            <div>¿Tu base de datos se corrompió? Eso no sucede
+                                con AVA. Tenemos tecnología probada por
+                                grandes empresas y control de accesos por
+                                usuarios y permisos
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 mt-3 ">
+                            <img src="img/ava/ava05.png" class="img-fluid w-25">
+                            <div class="text-dark font-weight-bold">Rápido</div>
+                            <div>Sin largas esperas. Puedes vender, realizar inventarios y
+                                registrar compras y AVA seguirá funcionando.
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 mt-3 ">
+                            <img src="img/ava/ava06.png" class="img-fluid w-25">
+                            <div class="text-dark font-weight-bold">Mínimos requerimientos</div>
+                            <div>Sabemos que invertir en tecnología no es barato.
+                                Por eso AVA se ejecuta desde 2GB de RAM y un
+                                procesador de dos nucleos
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Aspel -->
+<div class="modal fade" id="modalAspel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center bg-dark">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-8">
+                            <img src="img/aspel01.svg" class="w-50">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                Aspel automatiza los procesos de las micro, pequeñas y medianas empresas,
+                                favoreciendo la correcta toma de decisiones de manera sencilla, eficiente y productiva.
+                                Sus Sistemas facilitan el cumplimiento de las obligaciones fiscales electrónicas
+                                incluyendo facturación, contabilidad y nómina.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-4 col-sm-4 col-md-3 col-lg-2 mb-lg-2 text-center">
+                            <img src="img/aspel/aspel01.png" class="img-fluid w-75 ">
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-3 col-lg-2 mb-lg-2 text-center">
+                            <img src="img/aspel/aspel02.png" class="img-fluid w-75">
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-3 col-lg-2 mb-lg-2 text-center">
+                            <img src="img/aspel/aspel03.png" class="img-fluid w-75">
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-3 col-lg-2 mb-lg-2 text-center">
+                            <img src="img/aspel/aspel04.png" class="img-fluid w-75">
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-3 col-lg-2  mb-lg-2 text-center">
+                            <img src="img/aspel/aspel05.png" class="img-fluid w-75">
+                        </div>
+                        <div class="col-4  col-sm-4 col-md-3 col-lg-2 mb-lg-2  text-center">
+                            <img src="img/aspel/aspel06.png" class="img-fluid w-75">
+                        </div>
+                        <div class="col-4  col-sm-4 col-md-3 col-lg-2 mb-lg-2 text-center">
+                            <img src="img/aspel/aspel07.png" class="img-fluid w-75">
+                        </div>
+                        <div class="col-4  col-sm-4 col-md-3 col-lg-2 mb-lg-2 text-center">
+                            <img src="img/aspel/aspel08.png" class="img-fluid w-75">
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-3 col-lg-2  mb-lg-2 text-center">
+                            <img src="img/aspel/aspel09.png" class="img-fluid w-75">
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-3 col-lg-2 mb-lg-2 text-center">
+                            <img src="img/aspel/aspel10.png" class="img-fluid w-75">
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-3 col-lg-2 mb-lg-2 text-center">
+                            <img src="img/aspel/aspel11.png" class="img-fluid w-75">
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-3 col-lg-2 mb-lg-2 text-center">
+                            <img src="img/aspel/aspel12.png" class="img-fluid w-75">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Software - Microsoft -->
+<div class="modal fade" id="modalMicrosoft" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center bg-dark">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-8">
+                            <img src="img/microsoft01.png" class="w-75">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center pt-3">
+                        <div class="col-6 col-sm-6 col-md-3 mb-3">
+                            <img src="img/hogar.jpg" class="img-fluid pb-3">
+                            <div class="text-primary font-weight-bold">Hogar</div>
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-3 mb-3">
+                            <img src="img/negocio.png" class="img-fluid pb-3">
+                            <div class="text-primary font-weight-bold">Negocio</div>
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-3">
+                            <img src="img/empresa.png" class="img-fluid pb-3">
+                            <div class="text-primary font-weight-bold">Empresa</div>
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-3">
+                            <img src="img/educacion.png" class="img-fluid pb-3 pb-sm-3 pb-md-4 pb-lg-3">
+                            <div class="text-primary font-weight-bold">Educación</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Software - Antivirus -->
+<div class="modal fade" id="modalAntivirus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center bg-dark">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-12 text-center">
+                            <h2 class="titModal">ANTIVIRUS</h2>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center vcenter pt-3">
+                        <div class="col-4">
+                            <img src="img/bitdefenfer.png" class="img-fluid pb-3">
+
+                        </div>
+                        <div class="col-4">
+                            <img src="img/eset.png" class="img-fluid pb-3">
+
+                        </div>
+                        <div class="col-4">
+                            <img src="img/kaspersky.png" class="img-fluid pb-3">
+
+                        </div>
+                    </div>
+                    <div class="row justify-content-center text-center vcenter pt-3">
+                        <div class="col-4">
+                            <img src="img/norton.png" class="img-fluid pb-3">
+
+                        </div>
+                        <div class="col-4">
+                            <img src="img/panda.png" class="img-fluid pb-3">
+
+                        </div>
+                        <div class="col-4">
+                            <img src="img/mcfee.png" class="img-fluid pb-3">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Software especializado -->
+<div class="modal fade" id="modalEspecializado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center bg-dark">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-12 text-center">
+                            <h2 class="titModal">Software Especializado</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center vcenter pt-3">
+                        <div class="col-4">
+                            <img src="img/esp/esp01.png" class="img-fluid">
+                        </div>
+                        <div class="col-4 col-lg-3">
+                            <img src="img/esp/esp02.png" class="img-fluid">
+                        </div>
+                        <div class="col-4">
+                            <img src="img/esp/esp03.png" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Equipo de computo -->
+<div class="modal fade" id="modalEquipo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center bg-dark">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-12">
+                            <h2>EQUIPO DE CÓMPUTO</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center pt-3 pb-3">
+                        <div class="col-4">
+                            <div class="text-primary font-weight-bold text-center w-100">Escritorio</div>
+                            <img src="img/desktop01.png" class="img-fluid pt-3 w-75">
+                        </div>
+                        <div class="col-4">
+                            <div class="text-primary font-weight-bold">Laptop</div>
+                            <img src="img/laptop01.jpg" class="img-fluid pt-3 w-75">
+                        </div>
+                        <div class="col-4">
+                            <div class="text-primary font-weight-bold">Tabletas</div>
+                            <img src="img/tablet01.jpg" class="img-fluid pt-3 w-75">
+                        </div>
+                    </div>
+                    <div class="row justify-content-center text-center vcenter pt-3">
+                        <div class="col-3 col-sm-2 col-md-2 col-lg-1">
+                            <img src="img/lenovo02.jpg" class="img-fluid pb-3 w-100">
+                        </div>
+                        <div class="col-3 col-sm-2 col-md-2 col-lg-1">
+                            <img src="img/dell02.jpg" class="img-fluid w-100 pb-3">
+                        </div>
+                        <div class="col-3 col-sm-2 col-md-2 col-lg-1">
+                            <img src="img/apple02.jpg" class="img-fluid w-100 pb-3">
+                        </div>
+                        <div class="col-3 col-sm-2 col-md-2 col-lg-1">
+                            <img src="img/asus02.jpg" class="img-fluid w-100 pb-3">
+                        </div>
+                        <div class="col-3 col-sm-2 col-md-2 col-lg-1">
+                            <img src="img/hp02.jpg" class="img-fluid w-100 pb-3">
+                        </div>
+                        <div class="col-3 col-sm-2 col-md-2 col-lg-1">
+                            <img src="img/acer02.jpg" class="img-fluid w-100 pb-3">
+                        </div>
+                        <div class="col-3 col-sm-2 col-md-2 col-lg-1">
+                            <img src="img/ghia02.jpg" class="img-fluid w-100 pb-3">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Impresión -->
+<div class="modal fade" id="modalImpresion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center bg-dark">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-12">
+                            <h2>IMPRESIÓN</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center pt-3 pb-3">
+                        <div class="col-6 col-sm-6 col-md-3 col-lg-3">
+                            <div class="text-primary font-weight-bold text-center w-100">Láser</div>
+                            <img src="img/imp01.jpg" class="img-fluid mb-3 pt-3 w-75">
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-3 col-lg-3">
+                            <div class="text-primary font-weight-bold">Inyección</div>
+                            <img src="img/imp02.jpg" class="img-fluid mb-3 pt-3 w-75">
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-3 col-lg-3">
+                            <div class="text-primary font-weight-bold">Ticket</div>
+                            <img src="img/imp03.jpg" class="img-fluid mb-3 pt-3 w-75">
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-3 col-lg-3">
+                            <div class="text-primary font-weight-bold">Etiquetas</div>
+                            <img src="img/imp04.jpg" class="img-fluid mb-3 pt-3 w-75">
+                        </div>
+                    </div>
+                    <div class="row justify-content-center text-center vcenter pt-3">
+                        <div class="col-2 col-lg-1">
+                            <img src="img/kyocera01.png" class="img-fluid pb-3 w-100">
+                        </div>
+                        <div class="col-2 col-lg-1">
+                            <img src="img/epson01.png" class="img-fluid pb-3 w-100">
+                        </div>
+                        <div class="col-2 col-lg-1">
+                            <img src="img/marcas/zebra.png" class="img-fluid pb-3 w-100">
+                        </div>
+                        <div class="col-2  col-lg-1">
+                            <img src="img/brother01.png" class="img-fluid pb-3 w-100">
+                        </div>
+                        <div class="col-2 col-lg-1">
+                            <img src="img/hp02.jpg" class="img-fluid pb-3 w-75">
+                        </div>
+                        <div class="col-2 col-lg-1">
+                            <img src="img/xerox01.png" class="img-fluid pb-3 w-100">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Accesorios y widgets-->
+<div class="modal fade" id="modalAccesorios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center bg-dark">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-12">
+                            <h2>ACCESORIOS</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center pt-3 pb-3">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-3">
+                            <div class="text-primary font-weight-bold text-center w-100">Cómputo</div>
+                            <img src="img/widget01.png" class="img-fluid pt-3 w-75">
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-3">
+                            <div class="text-primary font-weight-bold">Punto de Venta</div>
+                            <img src="img/widget04.png" class="img-fluid pt-3 w-75">
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                            <div class="text-primary font-weight-bold">Video</div>
+                            <img src="img/widget02.png" class="img-fluid pt-3 w-25">
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                            <div class="text-primary font-weight-bold">Audio</div>
+                            <img src="img/widget03.png" class="img-fluid pt-3 w-75">
+                        </div>
+                    </div>
+                   <div class="row justify-content-center mt-3">
+                       <div class="col-3 col-lg-1 col-xl-1">
+                           <img src="img/marcas/logitech.png" class="img-fluid w-100">
+                       </div>
+                       <div class="col-3 col-lg-1  col-xl-1">
+                           <img src="img/marcas/ocelot.png" class="img-fluid w-100">
+                       </div>
+                       <div class="col-3 col-lg-1  col-xl-1">
+                           <img src="img/marcas/ecline.png" class="img-fluid w-100">
+                       </div>
+                       <div class="col-3 col-lg-1  col-xl-1">
+                           <img src="img/marcas/epson.png" class="img-fluid w-100">
+                       </div>
+                       <div class="col-3 col-lg-1  col-xl-1">
+                           <img src="img/marcas/acteck.png" class="img-fluid w-100">
+                       </div>
+                       <div class="col-3 col-lg-1  col-xl-1">
+                           <img src="img/marcas/perfect.png" class="img-fluid w-100">
+                       </div>
+                       <div class="col-3 col-lg-1  col-xl-1">
+                           <img src="img/marcas/corsair.png" class="img-fluid w-100">
+                       </div>
+                   </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Energia-->
+<div class="modal fade" id="modalEnergia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center bg-dark">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-12">
+                            <h2>ENERGIA</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center pt-3 pb-3">
+                        <div class="col-4 col-sm-4 col-md-4 col-lg-3 mb-3">
+                            <div class="text-primary font-weight-bold text-center w-100">No Breaks</div>
+                            <img src="img/energia/1.png" class="img-fluid pt-3 w-75">
+                        </div>
+                        <div class="col-3 col-sm-4 col-md-4 col-lg-3">
+                            <div class="text-primary font-weight-bold">UPS</div>
+                            <img src="img/energia/2.png" class="img-fluid pt-3 w-100">
+                        </div>
+                        <div class="col-5 col-sm-4 col-md-4 col-lg-3">
+                            <div class="text-primary font-weight-bold">Reguladores</div>
+                            <img src="img/energia/3.png" class="img-fluid pt-3 w-75">
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mt-3">
+                        <div class="col-3 col-lg-1 col-xl-1">
+                            <img src="img/marcas/isb.png" class="img-fluid w-100">
+                        </div>
+                        <div class="col-3 col-lg-1  col-xl-1">
+                            <img src="img/marcas/cdp.png" class="img-fluid w-100">
+                        </div>
+                        <div class="col-3 col-lg-1  col-xl-1">
+                            <img src="img/marcas/cyberpower.png" class="img-fluid w-100">
+                        </div>
+                        <div class="col-3 col-lg-1  col-xl-1">
+                            <img src="img/marcas/smartbitt.png" class="img-fluid w-100">
+                        </div>
+                        <div class="col-3 col-lg-1  col-xl-1">
+                            <img src="img/marcas/apc.png" class="img-fluid w-100">
+                        </div>
+                        <div class="col-3 col-lg-1  col-xl-1">
+                            <img src="img/marcas/forza.png" class="img-fluid w-100">
+                        </div>
+                        <div class="col-3 col-lg-1  col-xl-1">
+                            <img src="img/marcas/tripplite.png" class="img-fluid w-100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Aviso de privacidad -->
+<div class="modal fade" id="modalAviso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center bg-dark">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-8">
+                            <h2>Aviso de Privacidad</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+
+                </div>
+            </div>
+            <d  <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Terminos y condiciones -->
+<div class="modal fade" id="modalTerminos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center bg-dark">
+                <div class="container-fluid">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-8">
+                            <h2>Términos y condiciones</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- blog -->
+<div class="modal fade" id="modalBlog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal">
+        <div class="modal-content">
+            <div class="modal-header text-center justify-content-center">
+                <h5 class="modal-title" id="staticBackdropLabel">BLOG</h5>
+            </div>
+            <div class="modal-body">
+                <div class="container justify-content-center">
+                    <label class="w-100 text-center">PRÓXIMAMENTE</label>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<a href="https://api.whatsapp.com/send?phone=+526621686634&text=Hola. Quisiera más información sobre sus productos" class="float" target="_blank">
+    <i class="fab fa-whatsapp my-float"></i>
+</a>
+
+
+<script src="js/jquery-min.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/swiper-bundle.min.js"></script>
+<script src="js/sweetalert2.all.min.js"></script>
+<script src="js/app.js"></script>
+<script>
+
+    function checar() {
+        $('#btnEnviar').html('Enviando');
+        $('.form-control').val('');
+        $('input[type="checkbox"]').prop('checked', false);
+    }
+
+    function validarEmail(email) {
+        expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (!expr.test(email)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    // preloader
+    (function ($) {
+        'use strict';
+        $(window).on('load', function () {
+            if ($(".pre-loader").length > 0) {
+                $(".pre-loader").fadeOut("slow");
+            }
+        });
+    })(jQuery);
+
+    $('#carousel1').carousel({
+        touch: true,
+        pause: false,
+        interval: 10000
+    });
+
+    $('#carousel2').carousel({
+        touch: true,
+        pause: "hover",
+        interval: false
+    });
+
+    $('#carousel2').bind('slide.bs.carousel', function () {
+        var div = document.getElementById("carousel2");
+        var frames = div.getElementsByClassName("framecar");
+        for (var i = 0; i <= frames.length - 1; i++) {
+            var iframe1 = frames.item(i);
+            //console.log(iframe1);
+            var player = iframe1.contentWindow;
+            player.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        }
+    });
+
+    $(document).ready(function () {
+
+        var temas = [];
+
+        new WOW().init();
+
+        $('#formcontacto').submit(function (event) {
+            event.preventDefault();
+
+            var temas = [];
+
+            if ($('#checkSA').prop('checked')) {
+                temas.push('Sistemas Administrativos');
+            }
+            if ($('#checkSoftware').prop('checked')) {
+                temas.push('Software');
+            }
+            if ($('#checkHardware').prop('checked')) {
+                temas.push('Hardware');
+            }
+            if ($('#checkNet').prop('checked')) {
+                temas.push('Networking');
+            }
+            if ($('#checkPresencia').prop('checked')) {
+                temas.push('Presencia en Internet');
+            }
+            if ($('#checkSoporte').prop('checked')) {
+                temas.push('Soporte Técnico');
+            }
+            if ($('#checkSeguridad').prop('checked')) {
+                temas.push('Seguridad Perimetral');
+            }
+            if ($('#checkEcom').prop('checked')) {
+                temas.push('e-commerce');
+            }
+            var CorreoValido = validarEmail($('#txtCorreo').val());
+
+            if (!CorreoValido) {
+                Swal.fire({
+                    title: 'Proporcione un correo válido',
+                    text: 'El correo proporcionado no es válido',
+                    type: 'error',
+                    confirmButtonText: 'Aceptar'
+                });
+                //console.log($('#txtCorreo1').val());
+                return false
+            }
+
+            if (CorreoValido) {
+
+                $('#btnEnviar').html('Enviando...');
+                $('#btnEnviar').attr('disabled', true);
+
+                var formData = {
+                    'nombre': $('#txtNombre').val(),
+                    'correo': $('#txtCorreo').val(),
+                    'telefono': $('#txtTelefono').val(),
+                    'mensaje': $('#txtMensaje').val(),
+                    'temas': temas
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: 'contacto.php',
+                    data: formData,
+                    dataType: 'json',
+                    encode: true
+                })
+                        .done(function (data) {
+                            //console.log(data);
+                            $('#btnEnviar').html('Enviar');
+                            $('#btnEnviar').attr('disabled', false);
+
+                            if (data['error'] == '') {
+                                Swal.fire({
+                                    title: "Mensaje enviado",
+                                    text: "Gracias por escribirnos. En breve atenderemos sus dudas. Por favor verifique su correo",
+                                    type: "success",
+                                    confirmButtonText: "Aceptar",
+                                    showConfirmButton: true,
+                                    closeOnConfirm: true
+                                });
+                                //Limpiar
+                                $('.form-control').val('');
+                                $('input[type="checkbox"]').prop('checked', false);
+                            } else {
+                                Swal.fire({
+                                    title: "Ocurrió un error",
+                                    text: "Ocurrió un error al enviar su mensaje. Por favor inténtelo de nuevo.",
+                                    type: "error",
+                                    confirmButtonText: "Aceptar",
+                                    showConfirmButton: true,
+                                    closeOnConfirm: true
+                                });
+                            }
+                        })
+                        .fail(function (data) {
+                            //$('.overlay').hide();
+                            //$('.modal').hide();
+                            $('#btnEnviar').html('Enviar');
+                            $('#btnEnviar').attr('disabled', false);
+                            //console.log(data);
+
+                        });
+            } else {
+                sweetAlert('Correo inválido', 'Su correo no tiene la forma correcta. Por favor verifiquelo para atenderle de la mejor manera', 'error');
+            }
+        });
+
+
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            autoplay: true,
+            margin: 10,
+            nav: false,
+            dots: false,
+            slideTransition: 'linear',
+            autoplaySpeed: 6000,
+            smartSpeed: 6000,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 6
+                }
+            }
+        });
+
+        jQuery('.owl-carousel').trigger('play.owl.autoplay', [2000]);
+        function setSpeed() {
+            jQuery('.owl-carousel').trigger('play.owl.autoplay', [6000]);
+        }
+
+        setTimeout(setSpeed, 1000);
+
+
+        if ($(window).width() > 992) {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 180) {
+                    $('#navbar1').addClass("barra-top");
+                    // add padding top to show content behind navbar
+                    $('body').css('padding-top', $('.navbar').outerHeight() + 'px');
+                } else {
+                    $('#navbar1').removeClass("barra-top");
+                    // remove padding top from body
+                    $('body').css('padding-top', '0');
+                }
+            });
+        } // end if
+
+        var mySwiper = new Swiper('.swiper-container', {
+            autoplay: true,
+            direction: 'horizontal',
+            loop: true,
+            slidesPerView: 6,
+            slidesPerGroup: 6,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            breakpoints:{
+                340: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 2
+                },
+                480:{
+                    slidesPerView: 3,
+                    slidesPerGroup: 3
+                },
+                1024:{
+                    slidesPerView: 6,
+                    slidesPerGroup: 6
+                }
+            }
+        })
+
+
+    }); //fin onready
+
+</script>
+
+
+</body>
+</html>

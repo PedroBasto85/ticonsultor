@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ticonsultor</title>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <style>
+
+
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .inside {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            padding: 10px;
+            color: #FFFFFF;
+            z-index: 10000;
+            filter: opacity(100%);
+        }
+
+        .form-control {
+
+            border: 1px solid #1e3c72;
+            border-radius: 0;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .formlabel {
+            font-family: "Raleway", sans-serif !important;
+        }
+
+        .is-hidden {
+            opacity: 0;
+            transition: transform 0.4s, opacity 0.2s;
+        }
+
+        .barra-top {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1030;
+            visibility: visible;
+            background-color: #001222;
+            opacity: 0.9;
+            transition: visibility .5s ease-in;
+            -webkit-animation-name: animationFade;
+            animation-name: animationFade;
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            -webkit-box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.35);
+        }
+
+        header {
+            background-color: transparent;
+            position: relative;
+        }
+
+        .encabezado {
+            background-image: url("img/particulas.jpg");
+            background-size: cover;
+        }
+
+        .custom-toggler .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        }
+
+        .custom-toggler.navbar-toggler {
+            border-color: rgb(255, 102, 203);
+        }
+
+        .logomenu {
+            position: relative;
+            display: flex;
+            width: 20%;
+            float: left;
+            align-items: flex-start;
+            padding: 5px;
+            padding-left: 2%;
+
+            /*background-color: #ffffff;*/
+        }
+
+        .menu {
+            position: relative;
+            display: flex;
+            width: 60%;
+            float: left;
+            align-items: center;
+            padding: 5px;
+            /*background-color: #1e7e34*/;
+            text-align: center;
+        }
+
+        .redes {
+            position: relative;
+            display: flex;
+            width: 20%;
+            float: left;
+            align-items: flex-end;
+            padding: 5px;
+            padding-right: 2%;
+            /*background-color: #b21f2d*/;
+            text-align: right;
+        }
+
+        /*  .parallax {
+              !* The image used *!
+              background-image: url("img/18907.jpg");
+              height: 500px;
+              !* Create the parallax scrolling effect *!
+              background-attachment: fixed;
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+          }*/
+
+        .somos {
+            height: 500px;
+        }
+
+        .detalle {
+            background-color: #fff; /*Default bg, similar to the background's base color*/
+            /* background-image: url("img/poligon.jpg");
+             background-position: bottom left; !*Positioning*!
+             background-repeat: no-repeat; !*Prevent showing multiple background images*!
+             background-size: 25%;*/
+
+        }
+
+        .tit1 {
+            font-weight: 600;
+            font-size: 46px;
+            margin-bottom: 20px;
+        }
+
+        .tit2 {
+            font-weight: 500;
+            font-size: 50px;
+        }
+
+        .par {
+            max-width: 80%;
+            margin-left: 10%;
+        }
+
+        .par2 {
+            max-width: 80%;
+        }
+
+        .owl-carousel img {
+            width: 75% !important;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .carousel-control-prev-icon {
+            background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA2NCA2NDsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDY0IDY0IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiMxMzQ1NjM7fQo8L3N0eWxlPjxnPjxnIGlkPSJJY29uLUNoZXZyb24tTGVmdCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjM3LjAwMDAwMCwgMzM1LjAwMDAwMCkiPjxwb2x5bGluZSBjbGFzcz0ic3QwIiBpZD0iRmlsbC0zNSIgcG9pbnRzPSItMTk5LjEsLTI4OSAtMjEyLjksLTMwMi43IC0xOTkuMSwtMzE2LjQgLTE5Ny4xLC0zMTQuNCAtMjA4LjksLTMwMi43IC0xOTcuMSwtMjkxICAgICAgLTE5OS4xLC0yODkgICAgIi8+PC9nPjwvZz48L3N2Zz4=");
+            background-size: 200%;
+        }
+
+        .carousel-control-next-icon {
+            background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA2NCA2NDsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDY0IDY0IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiMxMzQ1NjM7fQo8L3N0eWxlPjxnPjxnIGlkPSJJY29uLUNoZXZyb24tTGVmdCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjM3LjAwMDAwMCwgMzM1LjAwMDAwMCkiPjxwb2x5bGluZSBjbGFzcz0ic3QwIiBpZD0iRmlsbC0zNSIgcG9pbnRzPSItMjEwLjksLTI4OSAtMjEyLjksLTI5MSAtMjAxLjEsLTMwMi43IC0yMTIuOSwtMzE0LjQgLTIxMC45LC0zMTYuNCAtMTk3LjEsLTMwMi43ICAgICAgLTIxMC45LC0yODkgICAgIi8+PC9nPjwvZz48L3N2Zz4=");
+            background-size: 200%;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 200px;
+        }
+
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            text-align: center;
+            line-height: 10px;
+            font-size: 12px;
+            color: #000;
+            opacity: 1;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .swiper-pagination-bullet-active {
+            color: #fff;
+            background: #007aff;
+        }
+
+        .logo-grid {
+            /*height: 60px;*/
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+        }
+
+        .contacto {
+            width: 100%;
+            height: auto;
+            background-color: #f1f1f1;
+        }
+
+        .contacto .temas {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: block;
+            /*background-color:#1e3c72 ;*/
+            padding: 15px;
+            padding-left: 55px;
+            color: #FFFFFF;
+            float: left;
+        }
+
+        .label-contacto {
+            font-weight: 200;
+            font-size: 24px;
+            margin-bottom: 40px;
+            text-align: center;
+            width: 100%;
+
+        }
+
+        .contacto .formacontacto {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: block;
+            padding: 15px;
+            color: #FFFFFF;
+            float: left;
+        }
+
+        .pie {
+            background-color: #001222;
+        }
+
+        /* Customize the label (the container) */
+        .contenedor {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Hide the browser's default checkbox */
+        .contenedor input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        /* Create a custom checkbox */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .contenedor:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+        .contenedor input:checked ~ .checkmark {
+            background-color: #2196F3;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+        .contenedor input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        /* Style the checkmark/indicator */
+        .contenedor .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        /* Style the input fields */
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            outline: none;
+        }
+
+        .input-field:focus {
+            border: 2px solid dodgerblue;
+            outline: none !important;
+            outline-width: 0 !important;
+            box-shadow: none;
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+        }
+
+        .input-group-text {
+            border-radius: 0;
+        }
+
+        .form-control {
+            border: 0;
+        }
+
+        .spl {
+            padding-left: 0;
+        }
+
+        .cpr {
+            padding-right: 15px;
+        }
+
+        @media (max-width: 1024px) {
+            .spl {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .cpr {
+                padding-right: 0;
+            }
+        }
+
+        .logoredes {
+            visibility: hidden;
+        }
+
+        @media (min-width: 1024px) {
+            .logoredes {
+                visibility: visible;
+            }
+        }
+
+        .logoprincipal {
+            width: 75%;
+            /*background-color: #FFFFFF;*/
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+
+        .mapas {
+            width: 100%;
+            height: 500px;
+            background-color: #FFFFFF;
+            /*background-image: url("img/ubicacionlocal01.png");*/
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .holder {
+            width: 100%;
+            height: 500px;
+            position: relative;
+        }
+
+       /* .frame {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }*/
+
+        .bar {
+            position: absolute;
+            top: 5%;
+            right: 10%;
+            width: 20%;
+            height: 90%;
+            background-color: #ffffff;
+            z-index: 999;
+            border-radius: 6px;
+        }
+
+        .card {
+            /*opacity: .8;*/
+            background-color: #2b2848;
+            width: 94%;
+            height: 94%;
+            top: 3%;
+            left: 3%;
+            border-radius: 0;
+            color: #ffffff;
+            padding: 10px;
+            border: 1px solid #ffffff;
+            border-radius: 6px;
+
+        }
+
+        .card .info {
+            background-color: #ffffff;
+
+        }
+
+        .icono {
+            color: #00A9A9;
+            font-size: 30px;
+            font-weight: 100;
+        }
+
+        .lbl-ubicacion {
+            color: #ffffff;
+            font-weight: 200;
+            font-size: 1.2em;
+        }
+
+        .lbl-telefonos {
+            color: #ffffff;
+            font-weight: 200;
+            font-size: 1em;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<section id="casosexito" class="w-100 bg-light">
+
+    <div class="container">
+        <div class="row py-5 px-5">
+            <div class="col">
+                <div id="carousel2" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col d-sm-none d-md-block">
+                                    <iframe class="frame" width="560" height="315"
+                                            src="https://www.youtube.com/embed/uxlOPJC3NzY?enablejsapi=1&rel=0"
+                                            frameborder="0"></iframe>
+                                </div>
+                                <div class="col">
+                               <span class=" h-100 justify-content-center text-center vcenter font-italic testimonio">
+                                   "La mejor experiencia de compra en Sonora. Estamos muy agradecidos con el personal tan profesional."<br><br>
+                                   Alejandro Encinas. <br> Pinturas comex Hermosillo
+                               </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col d-sm-none d-md-block">
+                                    <iframe class="frame" width="560" height="315"
+                                            src="https://www.youtube.com/embed/uxlOPJC3NzY?enablejsapi=1&rel=0"
+                                            frameborder="0"></iframe>
+                                </div>
+                                <div class="col">
+                             <span class=" h-100 justify-content-center text-center vcenter font-italic testimonio">
+                                   "La mejor experiencia de compra en Sonora. Estamos muy agradecidos con el personal tan profesional."<br><br>
+                                   Mercedes Carballo. <br> Taller el General
+                               </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev controls" href="#carousel2" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next controls" href="#carousel2" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+<script>
+
+    /*// preloader
+    (function ($) {
+        'use strict';
+        $(window).on('load', function () {
+            if ($(".pre-loader").length > 0) {
+                $(".pre-loader").fadeOut("slow");
+            }
+        });
+    })(jQuery);
+
+    $('.carousel').carousel({
+        touch: true,
+        pause: "hover"
+        //interval: false
+    });
+
+
+    $(document).ready(function () {
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            autoplay: true,
+            margin: 10,
+            nav: false,
+            dots: false,
+            slideTransition: 'linear',
+            autoplaySpeed: 6000,
+            smartSpeed: 6000,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 6
+                }
+            }
+        });
+*/
+    /*    jQuery('.owl-carousel').trigger('play.owl.autoplay', [2000]);
+        function setSpeed() {
+            jQuery('.owl-carousel').trigger('play.owl.autoplay', [6000]);
+        }*/
+
+        //setTimeout(setSpeed, 1000);
+
+       /* $('#carousel2').bind('slide.bs.carousel', function () {
+            var div = document.getElementById("carousel2");
+            var frames = div.getElementsByClassName("frame");
+            for (var i = 0; i <= frames.length - 1; i++) {
+                var iframe1 = frames.item(i);
+                //console.log(iframe1);
+                var player = iframe1.contentWindow;
+                player.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+            }
+        });*/
+
+       /* if ($(window).width() > 992) {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    $('#navbar1').addClass("barra-top");
+                    // add padding top to show content behind navbar
+                    $('body').css('padding-top', $('.navbar').outerHeight() + 'px');
+                } else {
+                    $('#navbar1').removeClass("barra-top");
+                    // remove padding top from body
+                    $('body').css('padding-top', '0');
+                }
+            });
+        } // end if*/
+
+        //new WOW().init();
+
+       /* var mySwiper = new Swiper('.swiper-container', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+            slidesPerView: 6,
+            slidesPerGroup: 6,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            }
+        })
+*/
+    //}); //fin onready
+
+</script>
+
+<!--Start of Tawk.to Script-->
+<!--<script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/5ff4b80aa9a34e36b9696785/1er9utq62';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+    })();
+</script>-->
+<!--End of Tawk.to Script-->
+
+</body>
+</html>
